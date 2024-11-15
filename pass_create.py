@@ -2,20 +2,17 @@ import tkinter as tk
 import random
 import string
 
-# Initialize the root window
 root = tk.Tk()
 root.geometry('400x280')
 root.title('Password Generator')
 
-# Intro text
 title = tk.StringVar()
 label = tk.Label(root, textvariable=title)
 label.pack()
 title.set('The strength of the password')
 
-# Radio buttons for password strength
 def selection():
-    pass  # Handle selection logic if necessary
+    pass
 
 choice = tk.IntVar()
 R1 = tk.Radiobutton(root, text='Poor', variable=choice, value=1, command=selection)
@@ -25,7 +22,6 @@ R2.pack(anchor='center')
 R3 = tk.Radiobutton(root, text='Advanced', variable=choice, value=3, command=selection)
 R3.pack(anchor='center')
 
-# Label for password length
 lenlabel = tk.StringVar()
 lenlabel.set('Password length')
 lentitle = tk.Label(root, textvariable=lenlabel)
@@ -35,14 +31,11 @@ val = tk.IntVar()
 spinlength = tk.Spinbox(root, from_=8, to_=24, textvariable=val, width=13)
 spinlength.pack()
 
-# Function to generate password
 def passgen():
-    # Define character sets
     poor = string.ascii_uppercase + string.ascii_lowercase + string.digits
     symbols = string.punctuation
     advance = poor + symbols
 
-    # Generate password based on choice
     if choice.get() == 1:
         return "".join(random.sample(poor, val.get()))
     elif choice.get() == 2:
@@ -52,7 +45,6 @@ def passgen():
     else:
         return "Select a strength"
 
-# Button to generate password
 def callback():
     password = passgen()
     sum.config(text=password)
@@ -60,7 +52,6 @@ def callback():
 passgenButton = tk.Button(root, text='Generate Password', bd=5, height=2, command=callback, pady=3)
 passgenButton.pack()
 
-# Display password result
 sum = tk.Label(root, text="")
 sum.pack(side='bottom')
 
