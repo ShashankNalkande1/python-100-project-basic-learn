@@ -1,0 +1,13 @@
+import os  # Import os module
+
+# Set the directory containing the files
+directory = "/path/to/your/files"
+
+# Loop through files in the directory
+for filename in os.listdir(directory):
+    old_file = os.path.join(directory, filename)  # Get full path of the file
+    if os.path.isfile(old_file):  # Check if it's a file
+        new_filename = "new_" + filename  # Create new filename
+        new_file = os.path.join(directory, new_filename)  # Get full path for new file
+        
+        os.rename(old_file, new_file)  # Rename the file
