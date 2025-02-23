@@ -1,0 +1,18 @@
+import time
+import random
+from datetime import datetime, timedelta
+
+def reverse_alarm():
+    now = datetime.now()
+    random_minutes = random.randint(1, 60)
+    past_time = now - timedelta(minutes=random_minutes)  # Fix: Corrected timedelta usage
+
+    print(f"\n⏳ Your alarm was set for {random_minutes} minutes ago!")
+    print(f"⏰ It should have gone off at {past_time.strftime('%H:%M:%S')}!")
+
+    time.sleep(2)  # Simulate delay
+    print("\n🚨 *ALARM SOUND* 🚨")
+    print("🔄 Too late! You missed it! 😆")
+
+if __name__ == "__main__":  # Fix: Corrected the if statement syntax
+    reverse_alarm()
